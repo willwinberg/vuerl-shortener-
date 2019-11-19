@@ -67,7 +67,6 @@ export default {
       this.longUrl = "";
       this.shortUrl = "";
       this.name = "";
-      console.log(this.urls);
     },
     generateUrl() {
       let vm = this;
@@ -87,11 +86,11 @@ export default {
             vm.shortUrl = response.data.data.url;
             vm.addUrl();
           } else {
-            console.log("Error generating URL");
+            return "Error generating URL";
           }
         })
         .catch(function(error) {
-          console.log("Error: " + error);
+          return "Error: " + error;
         });
     }
   }
