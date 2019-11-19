@@ -63,8 +63,7 @@
 <script>
 export default {
   name: "UrlInput",
-  components: {
-  },
+  components: {},
   props: {
     urls: Array
   },
@@ -78,7 +77,7 @@ export default {
       },
       { text: "Long URL", value: "longUrl" },
       { text: "Short URL", value: "shortUrl" },
-      { text: 'Actions', value: 'action', sortable: false }
+      { text: "Actions", value: "action", sortable: false }
     ],
     editedIndex: -1,
     editedItem: {

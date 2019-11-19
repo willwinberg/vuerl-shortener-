@@ -4,8 +4,8 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col>
-            <UrlForm :urls="urls"/>
-            <UrlList :urls="urls"/>
+            <UrlForm :urls="urls" />
+            <UrlList :urls="urls" />
           </v-col>
         </v-row>
       </v-container>
