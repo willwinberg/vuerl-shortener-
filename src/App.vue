@@ -1,9 +1,11 @@
 <template>
-  <v-app id="">
+  <v-app>
     <v-content>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4"> </v-col>
+          <v-col>
+            <UrlList />
+          </v-col>
         </v-row>
       </v-container>
     </v-content>
@@ -11,9 +13,12 @@
 </template>
 
 <script>
+  import UrlList from './components/UrlList.vue'
 export default {
-  name: 'VUeRL-Shortener',
-  components: {},
+  name: 'App',
+  components: {
+    UrlList
+  },
   data: () => ({
     //
   })
