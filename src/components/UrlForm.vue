@@ -32,18 +32,20 @@ const BITLY_KEY = "R_3acba2a6f39844c2adb685084688f6bd";
 
 export default {
   name: "NewUrlForm",
+  props: {
+    urls: Array
+  },
   data: () => ({
-    urls: [],
     valid: false,
+    name: "",
     longUrl: "",
     shortUrl: "",
-    name: "",
-    urlRules: [v => !!v || "Url is required", v => v || "Url must be valid"],
+    urlRules: [v => !!v || "Url is required"],
     nameRules: [v => v.length <= 10 || "Name must be less than 10 characters"]
   }),
   methods: {
     // I was using too much time on this so I'm saving it for later
-    checkUrl: url => {
+    // checkUrl: url => {
       // const pattern = new RegExp(
       //   "^(https?:\\/\\/)?" + // protocol
       //   "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
@@ -54,18 +56,18 @@ export default {
       //   "i"
       // ); // fragment locator
       // return !!pattern.test(url);
-      return url;
-    },
+      // return url;
+    // },
     addUrl() {
       this.urls.push({
-        name: this.urls.name,
-        url: this.longUrl,
+        name: this.name,
+        longUrl: this.longUrl,
         shortUrl: this.shortUrl
       });
       this.longUrl = "";
       this.shortUrl = "";
       this.name = "";
-      // console.log(this.urls);
+      console.log(this.urls);
     },
     generateUrl() {
       let vm = this;

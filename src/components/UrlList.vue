@@ -57,9 +57,6 @@
         mdi-delete
       </v-icon>
     </template>
-    <template v-slot:no-data>
-      <v-btn color="primary" @click="initialize">Reset</v-btn>
-    </template>
   </v-data-table>
 </template>
 
@@ -67,6 +64,9 @@
 export default {
   name: "UrlInput",
   components: {
+  },
+  props: {
+    urls: Array
   },
   data: () => ({
     dialog: false,
@@ -80,7 +80,6 @@ export default {
       { text: "Short URL", value: "shortUrl" },
       { text: 'Actions', value: 'action', sortable: false }
     ],
-    urls: [],
     editedIndex: -1,
     editedItem: {
       name: "",
@@ -93,45 +92,22 @@ export default {
       shortUrl: ""
     }
   }),
-  computed: {},
   watch: {
     dialog(val) {
       val || this.close();
     }
   },
-  created() {
-    this.initialize();
-  },
   methods: {
-    initialize() {
-      this.urls = [
-        {
-          name: "Red Wii",
-          longUrl:
-            "https://www.amazon.com/gp/product/B0046RDYPQ?pf_rd_p=183f5289-9dc0-416f-942e-e8f213ef368b&pf_rd_r=NGDXJMS8WYM0BNVE7K8B",
-          shortUrl: "https://amzn.to/35bsVqO"
-        },
-        {
-          name: "Eero",
-          longUrl:
-            "https://www.amazon.com/dp/B07YVVYDMJ/ref=ods_gw_ha_vicc_eero_3k?pf_rd_p=8c6a75a0-3d8c-4be3-8951-3c4e3351229e&pf_rd_r=KBYD08TWNMSMV0AS23MP&th=1",
-          shortUrl: "https://amzn.to/2KATlKQ"
-        }
-      ];
-    },
-
     editItem(item) {
       this.editedIndex = this.urls.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
-
     deleteItem(item) {
       const index = this.urls.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.urls.splice(index, 1);
     },
-
     close() {
       this.dialog = false;
       setTimeout(() => {
@@ -139,7 +115,6 @@ export default {
         this.editedIndex = -1;
       }, 300);
     },
-
     save() {
       if (this.editedIndex > -1) {
         Object.assign(this.urls[this.editedIndex], this.editedItem);
