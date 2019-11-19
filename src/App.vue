@@ -4,6 +4,7 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col>
+            <UrlForm />
             <UrlList />
           </v-col>
         </v-row>
@@ -13,14 +14,16 @@
 </template>
 
 <script>
-  import UrlList from './components/UrlList.vue'
+import UrlForm from "./components/UrlForm.vue";
+import UrlList from "./components/UrlList.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
+    UrlForm,
     UrlList
   },
   data: () => ({
     //
   })
-};
+}
 </script>
