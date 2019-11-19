@@ -1,4 +1,5 @@
 # vuerl-shortener
+This is a single page Vue app that shortens inputed URLs using the bit.ly API and saves them to an Express server
 
 ## Project setup
 ```
